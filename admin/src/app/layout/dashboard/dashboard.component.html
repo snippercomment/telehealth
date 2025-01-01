@@ -1,0 +1,64 @@
+
+<div class="admin-container" >
+
+    <aside class="sidebar">
+      <div class="logo">
+        <a routerLink = "/admin/statistical"><img src="assets/logo.jpg" alt="HealthCare" ></a>
+        <span>HealthCare</span>
+      </div>
+      <h2 class="sidebar-title">CHỨC NĂNG</h2>
+      <nav>
+        <ul>
+          <li>
+            <a routerLink="/admin/Statistical" routerLinkActive="active">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Bảng điều khiển</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/admin/Appointment" routerLinkActive="active">
+              <i class="fas fa-calendar-check"></i>
+              <span>Đặt khám từ xa</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/admin/Doctor" routerLinkActive="active">
+              <i class="fas fa-user-md"></i>
+              <span>Danh sách bác sĩ</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/admin/Hospital" routerLinkActive="active">
+              <i class="fas fa-hospital"></i>
+              <span>Danh sách bệnh viện</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/admin/Patient" routerLinkActive="active">
+              <i class="fas fa-users"></i>
+              <span>Thông tin bệnh nhân</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/admin/AppointmentStatistics" routerLinkActive="active">
+              <i class="fas fa-chart-bar"></i>
+              <span>Thống kê </span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+  
+    <main class="main-content">
+      <header>
+        <div class="header-content">
+          <h1></h1>
+          <button class="logout-btn" (click)="logout()">Đăng xuất</button>
+        </div>
+      </header>
+      
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+</div>

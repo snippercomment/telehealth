@@ -1,0 +1,34 @@
+<div class="container">
+  <div *ngIf="loading" class="loading">
+    <span>Đang tải thông tin...</span>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <span>Có lỗi xảy ra khi tải thông tin bệnh viện</span>
+  </div>
+
+  <div *ngIf="!loading && !error && hospitalInfo" class="hospital-container">
+    <div class="info-section">
+      <div class="logo-container">
+        <div class="basic-info">
+          <h2>{{hospitalInfo.name}}</h2>
+          <p class="address">Địa chỉ: {{hospitalInfo.address}}</p>
+          <p class="department"> Chuyên khoa: {{hospitalInfo.specialties}}</p>
+          <p class="hours">Giờ mở cửa: {{hospitalInfo.openTime}} - {{hospitalInfo.closeTime}}</p>
+        </div>
+      </div>
+
+      <div class="description">
+        <h3>Mô tả</h3>
+        <p>{{hospitalInfo.description}}</p>
+      </div>
+    </div>
+
+    <div class="image-section">
+      <img [src]="hospitalInfo.imagePath" 
+           alt="Hospital Image" 
+           class="hospital-image"
+           onerror="this.src='assets/images/default-hospital.jpg'">
+    </div>
+  </div>
+</div>

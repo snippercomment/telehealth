@@ -1,0 +1,92 @@
+<header class="header">
+    <div class="left">
+      <a routerLink="/" class="logo">
+          <img src="../../../assets/logo.jpg" alt="Health" class="logo" width="24px" height="24px">
+          <span class="logo-text">TeleHealth</span>
+      </a>
+          
+    </div>
+      <nav class="navbar">
+        <ul class="nav-list">
+          <li *ngFor="let item of menuItems" class="nav-item" [class.has-dropdown]="item.children">
+            <a [routerLink]="item.link" class="nav-link">
+              {{item.name}}
+              <span class="arrow-down" *ngIf="item.children"></span>
+            </a>
+            <ul class="dropdown-menu" *ngIf="item.children">
+              <li *ngFor="let child of item.children">
+                <a [routerLink]="child.link" class="dropdown-item">{{child.name}}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" *ngIf="!currentUser">
+        <button class="btn-login" routerLink="/login">Đăng nhập</button>
+        <button class="btn-register" routerLink="/register">Đăng ký</button>
+      </div>
+      <div class="user-menu" *ngIf="currentUser">
+        <div class="profile-dropdown" (click)="toggleDropdown()">
+          <img [src]="currentUser?.profileImage  || 'assets/icons/avatar.jpg'" alt="User avatar" width="200" height="150">
+          <div class="dropdown-content" [class.show]="showDropdown">
+            <a routerLink="/profile">Hồ sơ của tôi</a>
+            <a routerLink="/medical-history">Lịch sử đặt khám</a>
+            <a (click)="logout()">Đăng xuất</a>
+          </div>
+        </div>
+      </div>
+      
+    
+  </header>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+  
+  <!-- footer của trang -->
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="../../../assets/logo.jpg" alt="logo" width="24" height="24">
+        <span>TeleHealth</span>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h3>Danh mục</h3>
+      <ul>
+        <li><a href="home">Trang chủ</a></li>
+        <li><a href="services">Dịch vụ</a></li>
+        <li><a href="appointment">Đặt khám từ xa</a></li>
+        <li><a href="consultation">Tư vấn sức khoẻ</a></li>
+        <li><a href="about">Liên hệ với chúng tôi</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Về chúng tôi</h3>
+      <ul>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="security">Chính sách bảo mật</a></li>
+        <li><a href="provision">Điều khoản sử dụng</a></li>
+        <li><a href="#">Phương thức thanh toán</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Liên hệ</h3>
+      <ul>
+        <li>Hotline: 09.0123.4567</li>
+        <li>Email: telehealth123&#64;gmail.com</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>Copyright 2024 © TeleHealth</p>
+  </div>
+</footer>
+
+  

@@ -1,0 +1,108 @@
+.profile-management-container {
+  padding: 20px;
+  font-size: 16px; /* Đặt font chữ mặc định cho container */
+}
+
+table {
+  width: 100%;
+  font-size: 16px; /* Đảm bảo font chữ trong bảng lớn đủ */
+}
+
+.profile-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 10px 15px;
+  padding-right: 40px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.mat-column-actions {
+  width: 100px;
+}
+
+th.mat-header-cell {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  font-size: 16px; /* Tăng kích thước chữ của tiêu đề */
+}
+
+td.mat-cell {
+  padding: 10px;
+  font-size: 16px; /* Tăng kích thước chữ của nội dung */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px; /* Tăng kích thước chữ */
+}
+
+.pagination button.active {
+  background-color: #00a8b5;
+  color: white;
+  border-color: #00a8b5;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination-controls button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}

@@ -1,0 +1,67 @@
+<!-- doctors/components/doctor-list/doctor-list.component.html -->
+<div class="doctor-management">
+  <div class="container">
+    <h2>Quản lý bác sĩ</h2>
+    <div class="search-box">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm"
+        placeholder="Tìm kiếm bác sĩ..."
+        (input)="search()"
+      >
+      <a 
+        class="search-btn" 
+        routerLink="/admin/Doctor/addDoctors"
+      >
+        Thêm bác sĩ mới
+      </a>
+    </div>
+
+    <div class="table-responsive">
+      <table class="doctor-table">
+        <thead>
+          <tr>
+            <th>Hình ảnh</th>
+            <th>Tên</th>
+            <th>Chuyên khoa</th>
+            <th>Bệnh viện</th>
+            <th>Kinh nghiệm</th>
+            <th>Giá khám</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of pagedDoctors">
+            <td>
+              <div class="doctor-image">
+                <img [src]="doctor.imagePath" [alt]="doctor.name">
+              </div>
+            </td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.specialty}}</td>
+            <td>{{doctor.hospital}}</td>
+            <td>{{doctor.experience}}</td>
+            <td>
+              <p>{{doctor.consultationFee | number}} đ</p>
+            </td>
+            <td class="actions-cell">
+              <button class="edit-btn" [routerLink]="['/admin/Doctor/editDoctors', doctor.id]">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="delete-btn" (click)="deleteDoctor(doctor.id, doctor.name)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination-controls">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Trang trước</button>
+      <span>{{currentPage}}/{{totalPages}}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Trang sau</button>
+    </div>
+  </div>
+</div>

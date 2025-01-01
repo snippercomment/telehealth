@@ -1,0 +1,140 @@
+
+<div class="page-container">
+  <div *ngIf="error" class="error-message">
+    {{error}}
+  </div>
+  <div class="notification" *ngIf="showNotification">
+    <p>{{ notificationMessage }}</p>
+  </div>
+  <!-- Phần hiện thông tin bác sĩ -->
+  <div class="profile-container">
+    <div class="profile-card">
+      <div class="profile-image"  >
+        <img [src]="doctors?.imagePath "  [alt]="doctors?.name" 
+             >
+      </div>
+      
+      <div class="profile-content">
+        <div class="profile-header">
+          <h2 class="doctor-name">{{doctors?.name}}</h2>
+          <div class="specialty">
+            <span class="specialty-text">{{doctors?.specialty}}</span>
+            <span class="hospital-text">{{doctors?.hospital}}</span>
+            <span class="experience-badge">{{doctors?.experience}}</span>
+          </div>
+        </div>
+
+        <div class="doctor-info">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{{doctors?.address}}</span>
+          </div>
+        </div>
+
+        <div class="description">
+          <h3>Giới thiệu</h3>
+          <p>{{doctors?.description}}</p>
+        </div>
+
+        <div class="pricing">
+          <span class="price-label">Phí tư vấn:</span>
+          <span class="price-amount">{{doctors?.consultationFee | number}} đ</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phần đặt lịch khám -->
+    <div class="booking-container">
+      <h2>Đặt Lịch Khám</h2>
+      
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="booking-form">
+        <div class="form-group">
+          <label for="patientName">Họ và tên</label>
+          <input 
+            id="patientName"
+            type="text"
+            formControlName="patientName"
+            placeholder="Nhập họ và tên">
+          <div class="error-message" *ngIf="bookingForm.get('patientName')?.touched && bookingForm.get('patientName')?.invalid">
+            Vui lòng nhập họ và tên
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="patientPhone">Số điện thoại</label>
+          <input 
+            id="patientPhone"
+            type="tel"
+            formControlName="patientPhone"
+            placeholder="Nhập số điện thoại">
+          <div class="error-message" *ngIf="bookingForm.get('patientPhone')?.touched && bookingForm.get('patientPhone')?.invalid">
+            Vui lòng nhập số điện thoại hợp lệ (10 số)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Giới tính</label>
+          <div class="gender-options">
+            <div class="gender-option" *ngFor="let option of genderOptions">
+              <input 
+                type="radio"
+                [id]="option"
+                formControlName="gender"
+                [value]="option">
+              <label [for]="option">{{option.label}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="appointmentDate">Ngày khám</label>
+          <input 
+            id="appointmentDate"
+            type="date"
+            formControlName="appointmentDate">
+        </div>
+
+        <div class="form-group">
+          <label for="appointmentTime">Giờ khám</label>
+          <input 
+            id="appointmentTime"
+            type="time"
+            formControlName="appointmentTime">
+        </div>
+
+        <div class="form-group">
+          <label for="describe">Lý do</label>
+          <textarea 
+            id="describe"
+            formControlName="describe"
+            rows="4"
+            placeholder="Mô tả lý do của bạn"></textarea>
+        </div>
+
+        <button type="submit" [disabled]="!bookingForm.valid">
+          Đặt lịch khám
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Phần bác sĩ lien quan tới chuyên khoa đó -->
+  <div class="related-doctors">
+    <h2>Bác sĩ liên quan</h2>
+    <div class="doctors-grid">
+      <mat-card *ngFor="let relatedDoctor of relatedDoctors" class="doctor-card">
+        <div class="doctor-image">
+          <img [src]="relatedDoctor.imagePath" [alt]="relatedDoctor.name">
+        </div>
+        <mat-card-content>
+          <h3>{{relatedDoctor.name}}</h3>
+          <p class="specialty">{{relatedDoctor.specialty}}</p>
+          <p class="hospital">{{relatedDoctor.hospital}}</p>
+          <button mat-button color="primary" [routerLink]="['/doctors', relatedDoctor.id]">
+            Xem chi tiết
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

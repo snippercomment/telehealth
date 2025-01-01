@@ -1,0 +1,116 @@
+.statistics-container {
+    padding: 20px;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .stats-card {
+    padding: 20px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stats-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .stats-label {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .stats-detail {
+    text-align: right;
+    font-size: 14px;
+  }
+  
+  .orange { background-color: #FFA500; }
+  .green { background-color: #4CAF50; }
+  .blue { background-color: #03A9F4; }
+  .red { background-color: #f44336; }
+  /* Container chính */
+.stats-container {
+  display: flex;
+  justify-content: space-between; /* Khoảng cách đều giữa các phần */
+  align-items: flex-start; /* Canh trên cùng */
+  gap: 20px; /* Khoảng cách giữa hai phần */
+}
+
+/* Chi tiết từng phần */
+.detailed-stats, .appointment-status {
+  flex: 1; /* Chiếm không gian đều nhau */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown chọn thời gian */
+.period-selector select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Danh sách thống kê */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+ul ul {
+  margin-top: 10px;
+  margin-left: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #ddd;
+}
+
+ul ul li {
+  padding: 5px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+/* Tiêu đề */
+.stats-chart h4, .appointment-status h3 {
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* Hover */
+ul li:hover {
+  background-color: #f1f9ff;
+}
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  }

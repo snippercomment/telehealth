@@ -1,0 +1,66 @@
+<div class="appointments-container">
+  <div class="header">
+    <h2>Danh sách lịch khám</h2>
+    <div class="search-box">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="searchAppointments()"
+        placeholder="Tìm kiếm theo tên hoặc số điện thoại..."
+      />
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+
+  <div class="appointments-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Tên bệnh nhân</th>
+          <th>Số điện thoại</th>
+          <th>Ngày khám</th>
+          <th>Giờ khám</th>
+          <th>Giới tính</th>
+          <th>Mô tả</th>
+          <th>Trạng thái</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of filteredAppointments">
+          <td>{{ appointment.patientName }}</td>
+          <td>{{ appointment.patientPhone }}</td>
+          <td>{{ appointment.appointmentDate | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ appointment.appointmentTime }}</td>
+          <td>{{ appointment.gender }}</td>
+          <td>{{ appointment.describe }}</td>
+          <td>
+            <span [class]="'status ' + appointment.examinationStatus.toLowerCase()">
+              {{ appointment.examinationStatus }}
+            </span>
+          </td>
+          <td class="actions">
+            <!-- Nút "Đã khám" -->
+            <button
+              *ngIf="appointment.status?.trim() === 'Approved' && appointment.examinationStatus !== 'Đã khám'"
+              class="btn btn-examine"
+              (click)="updateStatus(appointment.id, 'Đã khám')"
+            >
+              Đã khám
+            </button>
+          
+            <!-- Nút "Chưa khám" -->
+            <button
+              *ngIf="appointment.status?.trim() === 'Approved' && appointment.examinationStatus !== 'Chưa khám'"
+              class="btn btn-pending"
+              (click)="updateStatus(appointment.id, 'Chưa khám')"
+            >
+              Chưa khám
+            </button>
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

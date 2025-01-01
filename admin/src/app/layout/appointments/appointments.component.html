@@ -1,0 +1,87 @@
+<!-- admin-appointments.component.html -->
+<div class="admin-appointments">
+  <h2>Quản lý lịch hẹn khám bệnh</h2>
+  <div class="search-container">
+    <input 
+      matInput 
+      placeholder="Tìm kiếm lịch hẹn..." 
+      [(ngModel)]="searchTerm" 
+      (input)="search()" 
+      class="search-input" />
+  </div>
+  
+  <div class="appointments-container" *ngIf="!loading && !error">
+    <table class="appointments-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Bệnh nhân</th>
+          <th>Thông tin liên hệ</th>
+          <th>Bác sĩ</th>
+          <th>Thời gian khám</th>
+          <th>Tình trạng</th>
+          <th>Mô tả</th>
+          <th>Giá khám</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appointment of paginatedAppointments">
+          <td>{{appointment.id}}</td>
+          <td>
+            {{appointment.patientName}}<br>
+            <span class="gender-label">{{appointment.gender === 'male' ? 'Nam' : appointment.gender === 'female' ? 'Nữ' : 'Khác'}}</span>
+          </td>
+          <td>
+            <div class="contact-info">
+              <p>SĐT: {{appointment.patientPhone}}</p>
+              <p>Email: {{appointment.user?.email}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="doctor-info">
+              <p>{{appointment.doctor?.name}}</p>
+              <span class="specialty">{{appointment.doctor?.specialty}}</span>
+            </div>
+          </td>
+          <td>{{formatDateTime(appointment.appointmentDate, appointment.appointmentTime)}}</td>
+          <td>
+            <span class="status" [class.approved]="appointment.isApproved">
+              {{appointment.approvalStatus}}
+            </span>
+          </td>
+          <td class="description-cell">{{appointment.describe}}</td>
+          <td>
+            <p>{{appointment.doctor!.consultationFee | number}} đ</p> <!-- Hiển thị giá tiền không có số 0 sau dấu phẩy -->
+          </td>
+          
+          <td>
+            <button
+              class="action-button"
+              [class.approved]="appointment.isApproved"
+              (click)="approveAppointment(appointment.id)"
+              [disabled]="appointment.isApproved">
+              {{ appointment.isApproved ? 'Đã Duyệt' : 'Xác nhận' }}
+            </button>
+          </td>          
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination-controls">
+      <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Trang trước</button>
+      <span>Trang {{currentPage}} / {{totalPages}}</span>
+      <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Trang sau</button>
+    </div>
+    
+  </div>
+
+  <div class="loading" *ngIf="loading">
+    <span class="loader"></span>
+    <p>Đang tải dữ liệu...</p>
+  </div>
+
+  <div class="error" *ngIf="error">
+    <p>{{error}}</p>
+    <button (click)="loadAppointments()">Thử lại</button>
+  </div>
+</div>

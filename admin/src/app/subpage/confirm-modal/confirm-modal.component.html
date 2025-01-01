@@ -1,0 +1,13 @@
+<!-- components/confirm-modal/confirm-modal.component.html -->
+<div class="modal-overlay">
+    <div class="modal-content">
+      <h3>Bạn chắc chắn phê duyệt?</h3>
+      <p *ngIf="appointment">
+        Lịch hẹn của người dùng: {{appointment.patientName}} với Bác sĩ: {{appointment.doctorId}}
+      </p>
+      <div class="modal-actions">
+        <button class="cancel-btn" (click)="cancel.emit()">Đóng</button>
+        <button class="approve-btn" (click)="confirm.emit()">Phê duyệt</button>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,163 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+}
+
+.register-card {
+  background: white;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+ .header {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #666;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 500;
+}
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 40px; 
+}
+
+.toggle-password {
+  position: absolute;
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  font-size: 1.5rem;
+}
+
+.toggle-password:hover {
+  color: #333;
+}
+.register-card h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: #333;
+}
+
+.register-card .form-group {
+  margin-bottom: 1.5rem;
+}
+
+
+.register-card .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.register-card .form-group input:not([type="checkbox"]) {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.register-card .form-group input:not([type="checkbox"]):focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.register-card .form-group.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.register-card .form-group.checkbox-group input[type="checkbox"] {
+  margin-top: 0.25rem;
+}
+
+.register-card .form-group.checkbox-group label {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.register-card .form-group.checkbox-group label a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.register-card .form-group.checkbox-group label a:hover {
+  text-decoration: underline;
+}
+
+.register-card .error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.register-card .submit-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.register-card .submit-button:hover:not(:disabled) {
+  background-color: #357abd;
+}
+
+.register-card .submit-button:disabled {
+  background-color: #b3d4f7;
+  cursor: not-allowed;
+}
+
+.register-card .login-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.register-card .login-link a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.register-card .login-link a:hover {
+  text-decoration: underline;
+}

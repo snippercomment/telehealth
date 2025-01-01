@@ -1,0 +1,96 @@
+
+.profile-detail-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  .profile-image-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #eee;
+  }
+  
+  .profile-info-section {
+    flex: 1;
+  }
+  
+  .info-label {
+    font-weight: bold;
+    min-width: 120px;
+    display: inline-block;
+  }
+  
+  .info-value {
+    margin-left: 20px;
+  }
+  
+  mat-list-item {
+    height: 48px !important;
+  }
+  
+  mat-divider {
+    margin: 10px 0;
+  }
+  .back-button {
+    background-color: #1976d2;
+    color: white; 
+    font-weight: bold;
+    padding: 8px 16px; 
+    border-radius: 4px;
+    display: flex; 
+    align-items: center;
+    gap: 8px; 
+    text-transform: uppercase; 
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: #1565c0; 
+    cursor: pointer;
+  }
+  
+  .back-button mat-icon {
+    font-size: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .profile-content {
+      flex-direction: column;
+    }
+  
+    .profile-image {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .info-label {
+      min-width: 100px;
+    }
+  }

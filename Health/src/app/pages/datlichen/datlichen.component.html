@@ -1,0 +1,70 @@
+
+
+<div class="main-container">
+
+  <div class="sidebar">
+    <form [formGroup]="filterForm">
+      <div class="search-box">
+        <input type="text" 
+               placeholder="Tìm kiếm theo tên hoặc chuyên khoa"
+               formControlName="searchTerm">
+      </div>
+
+      
+
+      <div class="filter-group">
+        <h3>Chuyên khoa</h3>
+        <div formGroupName="specialties">
+          <div *ngFor="let specialty of specialties">
+            <label>
+              <input type="checkbox" [formControlName]="specialty">
+              {{specialty}}
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <div class="doctors-grid">
+      <div *ngIf="isLoading" class="loading">
+        <div class="spinner"></div>
+      </div>
+    
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+    
+      <div class="doctors-container" *ngIf="!isLoading && !error">
+        <div class="doctor-card" *ngFor="let doctor of displayedDoctors">
+          <div class="doctor-image">
+            <img [src]="doctor.imagePath" [alt]="doctor.name">
+          </div>
+          
+          <div class="doctor-info">
+            <h3>{{ doctor.name }}</h3>
+            <p class="specialty">{{ doctor.specialty }}</p>
+            <p class="hospital">{{ doctor.hospital }}</p>
+          </div>
+    
+          <div class="doctor-actions">
+            <button class="btn-book" [routerLink]="['/appointment-link', doctor.id]">
+              Đặt lịch
+            </button>
+            <button class="btn-consult" [routerLink]="['/consultation', doctor.id]">
+              Tư vấn
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="load-more" *ngIf="doctors.length > displayedDoctors.length">
+        <button class="btn-load-more" (click)="loadMore()">
+          Xem thêm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

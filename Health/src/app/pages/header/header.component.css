@@ -1,0 +1,791 @@
+/* Phandau */
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(214, 198, 198, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    letter-spacing:1px;
+}
+/* logo */
+.left {
+    display: flex;
+    align-items: center;
+}
+  
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 0.5rem;
+}
+  
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333333;
+}
+/* thanh header */
+.center {
+    display: flex;
+    gap: 2rem;   
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-item {
+  position: relative;
+  padding: 15px 0;
+}
+
+.nav-link {
+  color: #333;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.arrow-down {
+  border: solid #333;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-item:hover .arrow-down {
+  transform: rotate(-135deg);
+}
+
+.dropdown-item {
+  color: #333;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-item {
+    padding: 0;
+  }
+
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+}
+   /* nút dang ký dang nhap */
+/* .right {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logout-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #4361ee;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #3451db;
+}
+
+ 
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+  
+.btn-outline {
+    border: 1.5px solid #4C6FFF;
+    color: #4C6FFF;
+}
+  
+.btn-outline:hover {
+    background-color: #4C6FFF;
+    color: white;
+}
+  
+.btn-primary {
+    background-color: #4C6FFF;
+    color: white;
+    border: 1.5px solid #4C6FFF;
+}
+  
+.btn-primary:hover {
+    background-color: #3b5bdb;
+    border-color: #3b5bdb;
+} */
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-buttons button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.auth-buttons button.btn-login {
+  background: transparent;
+  border: 1px solid #4a90e2;
+  color: #4a90e2;
+}
+
+.auth-buttons button.btn-login:hover {
+  background: #4a90e2;
+  color: white;
+}
+
+.auth-buttons button.btn-register {
+  background: #4a90e2;
+  color: white;
+}
+
+.auth-buttons button.btn-register:hover {
+  background: #357abd;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu .profile-dropdown {
+  cursor: pointer;
+}
+
+.user-menu .profile-dropdown img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #4a90e2;
+}
+
+.user-menu .profile-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  min-width: 200px;
+}
+
+.user-menu .profile-dropdown .dropdown-content.show {
+  display: block;
+}
+
+.user-menu .profile-dropdown .dropdown-content a {
+  display: block;
+  padding: 0.8rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.user-menu .profile-dropdown .dropdown-content a:hover {
+  background-color: #f5f5f5;
+  color: #4a90e2;
+}
+/* Phần main */
+.hero-section {
+    background: #6C63FF;
+    color: white;
+    padding: 60px;
+    /* border-radius: 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px;
+    overflow: hidden;
+    position: relative;
+}
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 1;
+}
+  
+.hero-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+  
+.hero-subtitle {
+    display: block;
+    margin-top: 10px;
+}
+  
+.doctors-preview {
+    margin: 30px 0;
+}
+  /* avatars */
+.doctor-avatars {
+    display: flex;
+    margin-bottom: 15px;}
+  
+.avatar {
+    /* width: 40px;
+    height: 40px; */
+    /* border-radius: 50%; */
+    /* border: 2px solid white; */
+    margin-right: -10px;
+}
+.hero-description {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+  
+.appointment-btn {
+    background: white;
+    color: #6C63FF;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+  
+.arrow {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+  
+.appointment-btn:hover {
+    background: #f8f8f8;
+}
+  
+.appointment-btn:hover .arrow {
+    transform: translateX(5px);
+}
+  
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+  
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* phần tử tìm kiếm chuyên ngành */
+.specialties-section {
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  .section-description {
+    max-width: 600px;
+    margin: 0 auto 40px;
+    color: #666;
+    line-height: 1.6;
+  }
+  /* các phần tử */
+  .specialties-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .specialty-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .specialty-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .specialty-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+  }
+  
+  .specialty-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  
+  .specialty-name {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+    text-align: center;
+  }
+
+/* phần tìm bác sĩ */
+.doctors-section {
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 40px;
+  }
+  
+  .doctors-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+  
+  .doctor-card {
+    background: #F8F9FE;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .doctor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .doctor-image {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+  }
+  
+  .doctor-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hospital-type {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+  }
+  .status {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    font-size: 12px;
+  }
+  
+  .status.available {
+    color: #4CAF50;
+  }
+  
+  .status mat-icon {
+    font-size: 12px;
+    height: 12px;
+    width: 12px;
+    margin-right: 4px;
+  }
+  
+  /* .status::before {
+    content: "•";
+    margin-right: 4px;
+  } */
+  
+  .doctor-info {
+    padding: 15px;
+  }
+  
+  .doctor-name a{
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
+    text-decoration: none;
+  }
+  
+  .doctor-specialty {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+  
+  .load-more {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    background: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .load-more:hover {
+    background: #5b52e5;
+  }
+  .button-group {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .button-group button,
+  .button-group a {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+  }
+  
+  /* Style 1: Scale effect with glow */
+  .button-group button.btn-primary,
+  .button-group a.btn-primary {
+    background: #4763E4;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .button-group button.btn-primary:hover,
+  .button-group a.btn-primary:hover {
+    transform: scale(1.05);
+    background: #3651d1;
+    box-shadow: 0 0 20px rgba(71, 99, 228, 0.6);
+  }
+  
+  .button-group button.btn-primary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: 0.5s;
+  }
+  
+  .button-group button.btn-primary:hover:before,
+  .button-group a.btn-primary:hover:before {
+    left: 100%;
+  }
+  
+  /* Style 2: Border animation */
+  .button-group button.btn-secondary,
+  .button-group a.btn-secondary {
+    background: white;
+    border: 1px solid #4763E4;
+    color: #4763E4;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button-group button.btn-secondary:hover,
+  .button-group a.btn-secondary:hover {
+    color: white;
+  }
+  
+  .button-group button.btn-secondary:before,
+  .button-group a.btn-secondary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: #4763E4;
+    transition: all 0.3s;
+    z-index: -1;
+    border-radius: 5px;
+  }
+  
+  .button-group button.btn-secondary:hover:before,
+  .button-group a.btn-secondary:hover:before {
+    width: 100%;
+  }
+  
+  /* Click effect */
+  .button-group button:active,
+  .button-group a:active {
+    transform: scale(0.95);
+  }
+  /*  */
+  .banner-container {
+    background: #6366F1;
+    border-radius: 16px;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .banner-content {
+    color: white;
+    max-width: 50%;
+    z-index: 1;
+  }
+  
+  .banner-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+  }
+  
+  .banner-subtitle {
+    font-size: 24px;
+    margin: 0 0 32px 0;
+    opacity: 0.9;
+  }
+  
+  .create-account-btn  {
+    background: white;
+    color: #6366F1;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .create-account-btn a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .create-account-btn a:hover {
+    transform: translateY(-2px);
+    color: #3b5bdb;
+  }
+  
+  /* trang footer */
+  .footer {
+    background-color: #F3F4F6;
+    padding: 60px 0 20px;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .footer-brand .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #6366F1;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section h3 {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-section ul li a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #6366F1;
+  }
+  
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 20px 20px 0;
+    border-top: 1px solid #E5E7EB;
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    color: #9CA3AF;
+    font-size: 14px;
+  }
+  
+  
+/* @media (max-width: 768px) {
+    .header-center {
+      display: none;
+    }
+    
+    .header {
+      padding: 0.75rem 1rem;
+    }
+    
+    .logo-text {
+      font-size: 1.1rem;
+    }
+    
+    .header-right {
+      gap: 0.5rem;
+    }
+    
+    .btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+} */
+@media (max-width: 1024px) {
+  .hero-section {
+    padding: 40px;
+}
+
+  .hero-title {
+    font-size: 36px;
+  }
+}

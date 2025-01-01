@@ -1,0 +1,82 @@
+<!-- admin/components/profile-detail/profile-detail.component.html -->
+<div class="profile-detail-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Chi tiết thông tin người dùng</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <div *ngIf="isLoading" class="loading-spinner">
+          <mat-spinner diameter="40"></mat-spinner>
+        </div>
+  
+        <div *ngIf="error" class="error-message">
+          {{error}}
+        </div>
+  
+        <div *ngIf="user && !isLoading" class="profile-content">
+          <div class="profile-image-section">
+            <img [src]="user.profileImage || 'assets/icons/avatar.jpg'" 
+                 alt="Profile Image"
+                 class="profile-image"
+                 >
+          </div>
+  
+          <div class="profile-info-section">
+            <mat-list>
+              <mat-list-item>
+                <span class="info-label">Họ và tên:</span>
+                <span class="info-value">{{user.fullName}}</span>
+              </mat-list-item>
+  
+              <mat-divider></mat-divider>
+  
+              <mat-list-item>
+                <span class="info-label">Email:</span>
+                <span class="info-value">{{user.email}}</span>
+              </mat-list-item>
+  
+              <mat-divider></mat-divider>
+  
+              <mat-list-item>
+                <span class="info-label">Số điện thoại:</span>
+                <span class="info-value">{{user.phoneNumber || 'Chưa cập nhật'}}</span>
+              </mat-list-item>
+  
+              <mat-divider></mat-divider>
+  
+              <mat-list-item>
+                <span class="info-label">Địa chỉ:</span>
+                <span class="info-value">{{user.address || 'Chưa cập nhật'}}</span>
+              </mat-list-item>
+  
+              <mat-divider></mat-divider>
+  
+              <mat-list-item>
+                <span class="info-label">Giới tính:</span>
+                <span class="info-value">
+                  {{user.gender === 'male' ? 'Nam' : user.gender === 'female' ? 'Nữ' : 'Khác'}}
+                </span>
+              </mat-list-item>
+  
+              <mat-divider></mat-divider>
+  
+              <mat-list-item>
+                <span class="info-label">Ngày sinh:</span>
+                <span class="info-value">
+                  {{user.birthDate ? (user.birthDate | date:'dd/MM/yyyy') : 'Chưa cập nhật'}}
+                </span>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </mat-card-content>
+  
+      <mat-card-actions align="end">
+        <button mat-button color="primary" (click)="goBack()" class="back-button">
+          <mat-icon>arrow_back</mat-icon>
+          Quay lại
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>

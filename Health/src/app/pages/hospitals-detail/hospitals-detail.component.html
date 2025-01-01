@@ -1,0 +1,45 @@
+<div class="medical-search-container">
+  <h1 class="title">Bệnh viện</h1>
+  <p class="subtitle">
+    Với những Bệnh viện hàng đầu sẽ giúp trải nghiệm khám của bạn tốt hơn
+  </p>
+
+  <div class="search-box">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm"
+      placeholder="Nhập tên bệnh viện bất kỳ..."
+      (keyup.enter)="onSearch()"
+    >
+    <button class="search-button" (click)="onSearch()">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+
+  <div class="hospital-list">
+    <div class="hospital-grid">
+      <div 
+        class="hospital-card" 
+        *ngFor="let hospital of filteredHospitals"
+      >
+        <img 
+          [src]="hospital.imagePath" 
+          [alt]="hospital.name" 
+          class="hospital-image" 
+          [routerLink]="['admin/Hospital', hospital.id]"
+        >
+        <div class="hospital-info">
+          <h3>{{ hospital.name }}</h3>
+          <p class="address">{{ hospital.address }}</p>
+          <button class="booking-btn" [routerLink]="['/appointment']">
+            Đặt khám ngay
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredHospitals.length === 0 && searchTerm">
+    <p>Không tìm thấy bệnh viện nào phù hợp với từ khóa "{{ searchTerm }}"</p>
+  </div>
+</div>

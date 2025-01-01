@@ -1,0 +1,101 @@
+<main>
+  <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Đặt khám từ xa<br>
+          <span class="hero-subtitle">Với các bác sĩ đáng tin cậy</span>
+        </h1>
+    
+        <div class="doctors-preview">
+          <div class="doctor-avatars">
+            <img src="../../../assets/group_profiles.png" alt="Doctor" class="avatar">
+            
+          </div>
+          <p class="hero-description">
+            Chỉ cần duyệt qua danh sách các bác sĩ đáng tin cậy của chúng tôi,<br>
+            đặt khám từ xa mà không gặp rắc rối.
+          </p>
+        </div>
+    
+        <button class="appointment-btn" routerLink="/appointment">
+          Đặt khám từ xa
+          <span class="arrow">→</span>
+        </button>
+      </div>
+    
+      <div class="hero-image">
+        <img src="../../../assets/header_img.png" alt="Doctors Team">
+      </div>
+  </div>
+
+<!-- phần các mục chuyên khoa  -->
+  <section class="specialties-section">
+    <h2 class="section-title">Tìm theo chuyên ngành</h2>
+    <p class="section-description">
+      Chỉ cần duyệt qua danh sách các cơ sở bác sĩ đáng tin cậy của chúng tôi và 
+      đặt khám từ xa mà không gặp rắc rối.
+    </p>
+  
+    <div class="specialties-grid">
+      <div class="specialty-card" *ngFor="let specialty of specialties">
+        <div class="specialty-icon">
+          
+          <img [src]="specialty.icon" [alt]="specialty.name">
+        </div>
+        <h3 class="specialty-name">{{ specialty.name }}</h3>
+      </div>
+    </div>
+  </section>
+  <!-- phần thông tin bác sĩ -->
+  <section class="doctors-section">
+    <h2 class="section-title">Bác sĩ hàng đầu để đặt khám từ xa</h2>
+  
+    <div class="doctors-grid">
+      <div *ngIf="isLoading" class="loading">
+        <div class="spinner"></div>
+      </div>
+    
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+    
+      <div class="doctors-container" *ngIf="!isLoading && !error">
+        <div class="doctor-card" *ngFor="let doctor of displayedDoctors">
+          <div class="doctor-image">
+            <img [src]="doctor.imagePath" [alt]="doctor.name">
+          </div>
+          
+          <div class="doctor-info">
+            <h3>{{ doctor.name }}</h3>
+            <p class="specialty">{{ doctor.specialty }}</p>
+            <p class="hospital">{{ doctor.hospital }}</p>
+          </div>
+    
+          <div class="doctor-actions">
+            <button class="btn-book" [routerLink]="['/appointment-link', doctor.id]">
+              Đặt lịch
+            </button>
+            <button class="btn-consult" [routerLink]="['/consultation', doctor.id]">
+              Tư vấn
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="load-more" *ngIf="doctors.length > displayedDoctors.length">
+        <button class="btn-load-more" (click)="loadMore()">
+          Xem thêm
+        </button>
+      </div>
+    </div>
+  </section>
+  <!--  -->
+  <div class="banner-container">
+    <div class="banner-content">
+      <h1 class="banner-title">Đặt khám từ xa</h1>
+      <p class="banner-subtitle">Với nhiều bác sĩ đáng tin cậy</p>
+      <button class="create-account-btn" > <a href="register">Tạo tài khoản</a></button>
+    </div>
+    <img src="../../../assets/banner.png" alt="" >
+  </div>
+</main>

@@ -1,0 +1,140 @@
+<body>
+    <div class="consultation-container">
+        <div class="consultation-list">
+            <h2>Danh sách tư vấn</h2>
+            <div class="consultation-tabs">
+                <button [class.active]="activeTab === 'pending'" (click)="setActiveTab('pending')">
+                    Chờ tư vấn <span class="badge" *ngIf="pendingConsultations.length">({{pendingConsultations.length}})</span>
+                </button>
+                <button [class.active]="activeTab === 'active'" (click)="setActiveTab('active')">
+                    Đang tư vấn <span class="badge" *ngIf="activeConsultations.length">({{activeConsultations.length}})</span>
+                </button>
+                <button [class.active]="activeTab === 'history'" (click)="setActiveTab('history')">Lịch sử</button>
+            </div>
+
+            <!-- Pending Consultations -->
+            <div *ngIf="activeTab === 'pending'" class="consultation-items">
+                <div *ngFor="let consultation of pendingConsultations" class="consultation-item">
+                    <div class="consultation-header">
+                        <span class="user-name">{{consultation.userName}}</span>
+                        <span class="timestamp">{{consultation.createdAt | date:'short'}}</span>
+                        <span class="status-badge">{{getStatusText(consultation.status)}}</span>
+                    </div>
+                    <div class="consultation-content">
+                        <p class="question-label">Câu hỏi:</p>
+                        <p class="question-content">{{consultation.question}}</p>
+                    </div>
+                    <button (click)="acceptConsultation(consultation.id)" class="accept-btn">
+                        Tiếp nhận tư vấn
+                    </button>
+                </div>
+            </div>
+
+            <!-- Active Consultations -->
+            <div *ngIf="activeTab === 'active'" class="consultation-items">
+                <div *ngFor="let consultation of activeConsultations" class="consultation-item"
+                     [class.selected]="selectedConsultation?.id === consultation.id"
+                     (click)="loadConsultationDetail(consultation.id)">
+                    <div class="consultation-header">
+                        <span class="user-name">{{consultation.userName}}</span>
+                        <span class="timestamp">{{consultation.createdAt | date:'short'}}</span>
+                        <span class="status-badge">{{getStatusText(consultation.status)}}</span>
+                        <span class="doctor-name" *ngIf="consultation.doctor">Bác sĩ: {{consultation.doctor}}</span>
+                    </div>
+                    <div class="consultation-content">
+                        <p class="last-message" *ngIf="consultation.lastMessage">
+                            <strong>Tin nhắn cuối:</strong> {{consultation.lastMessage}}
+                        </p>
+                        <span class="message-count" *ngIf="consultation.messageCount">
+                            {{consultation.messageCount}} tin nhắn
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div *ngIf="activeTab === 'history'" class="consultation-items">
+                <div *ngFor="let consultation of consultationHistory" class="consultation-item"
+                     (click)="loadConsultationDetail(consultation.id)">
+                    <div class="consultation-header">
+                        <span class="user-name">{{consultation.userName}}</span>
+                        <span class="status-badge" [class]="consultation.status.toLowerCase()">
+                            {{getStatusText(consultation.status)}}
+                        </span>
+                        <span class="doctor-name" *ngIf="consultation.doctor">Bác sĩ: {{consultation.doctor}}</span>
+                    </div>
+                    <div class="consultation-content">
+                        <p class="last-message" *ngIf="consultation.lastMessage">
+                            <strong>Tin nhắn cuối:</strong> {{consultation.lastMessage}}
+                        </p>
+                        <div class="consultation-footer">
+                            <span class="timestamp">{{consultation.createdAt | date:'medium'}}</span>
+                            <span class="message-count" *ngIf="consultation.messageCount">
+                                {{consultation.messageCount}} tin nhắn
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Section -->
+        <div class="chat-section" *ngIf="selectedConsultation">
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h3>{{selectedConsultation.userName}}</h3>
+                    <span class="consultation-status">{{getStatusText(selectedConsultation.status)}}</span>
+                    <span class="doctor-name" *ngIf="selectedConsultation.doctor">Bác sĩ: {{selectedConsultation.doctor}}</span>
+                </div>
+                <button (click)="endConsultation(selectedConsultation.id)" 
+                        [disabled]="selectedConsultation.status !== 'Active'"
+                        class="end-btn">
+                    Kết thúc tư vấn
+                </button>
+            </div>
+            
+            <div class="original-question">
+                <!-- <strong>Câu hỏi ban đầu:</strong>
+                <p>{{selectedConsultation.question}}</p> -->
+            </div>
+
+            <div class="chat-messages" #scrollMessages>
+                <div *ngFor="let message of selectedConsultation.messages" 
+                     [class]="'message ' + (message.senderType === 'Doctor' ? 'sent' : 'received')">
+                  <div class="message-header">
+                    <span class="sender-name">{{message.senderName}}</span>
+                    <span class="message-time">{{message.createdAt | date:'short'}}</span>
+                  </div>
+                  <div class="message-content">{{message.message}}</div>
+                </div>
+              </div>
+              
+              <div class="chat-input" *ngIf="selectedConsultation.status === 'Active'">
+                <!-- Input tin nhắn -->
+                <input 
+                    type="text" 
+                    [(ngModel)]="newMessage" 
+                    placeholder="Nhập tin nhắn..." 
+                    (keyup.enter)="sendMessage()" 
+                    [disabled]="selectedConsultation.status !== 'Active'"
+                >
+              
+                <!-- Input file -->
+                <input 
+                    type="file" 
+                    (change)="onFileSelected($event)" 
+                    accept="image/*"
+                >
+              
+                <!-- Nút gửi -->
+                <button 
+                    (click)="sendMessage()" 
+                    [disabled]="(!newMessage.trim() && !selectedFile) || selectedConsultation.status !== 'Active'">
+                    Gửi
+                </button>
+            </div>
+            
+              
+        </div>
+    </div>
+</body>

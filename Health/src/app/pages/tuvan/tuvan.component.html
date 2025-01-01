@@ -1,0 +1,127 @@
+
+<body>
+    <div class="consultation-container">
+        <div class="consultation-list">
+            <h2>Tư vấn của tôi</h2>
+            <div class="new-consultation" *ngIf="!showNewConsultationForm">
+                <button (click)="showNewConsultationForm = true" class="create-btn">
+                    Tạo cuộc tư vấn mới
+                </button>
+            </div>
+
+            <!-- New Consultation Form -->
+            <div class="consultation-form" *ngIf="showNewConsultationForm">
+                <h3>Tạo cuộc tư vấn mới</h3>
+                <form (ngSubmit)="createConsultation()">
+                    <div class="form-group">
+                        <label>Họ tên:</label>
+                        <input type="text" [(ngModel)]="newConsultation.userName" name="userName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Câu hỏi của bạn:</label>
+                        <textarea [(ngModel)]="newConsultation.question" name="question" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">Gửi tư vấn</button>
+                        <button type="button" (click)="showNewConsultationForm = false" class="cancel-btn">Hủy</button>
+                    </div>
+                </form>
+            </div>
+
+           <!-- Consultation History -->
+    <div class="consultation-items" *ngIf="!selectedConsultation || selectedConsultation.status !== 'Completed' && selectedConsultation.status !== 'UserEnded' && selectedConsultation.status !== 'DoctorEnded'">
+    <div *ngFor="let consultation of consultations" 
+         class="consultation-item"
+         (click)="selectConsultation(consultation)">
+        <div class="consultation-header">
+            <span class="status-badge" [class]="consultation.status.toLowerCase()">
+                {{getStatusText(consultation.status)}}
+            </span>
+            <span class="timestamp">{{consultation.createdAt | date:'short'}}</span>
+        </div>
+        <div class="consultation-content">
+            <!-- <p class="question">{{consultation.question}}</p> -->
+            <p class="last-message" *ngIf="consultation.lastMessage">
+                Tin nhắn cuối: {{consultation.lastMessage}}
+            </p>
+            <span class="doctor-name" *ngIf="consultation.doctorName">
+                Bác sĩ: {{consultation.doctorName}}
+            </span>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <!-- Chat Section -->
+        <div class="chat-section" *ngIf="selectedConsultation">
+            <div class="chat-header">
+                <div class="chat-info">
+                    <h3>Tư vấn với {{selectedConsultation.doctorName || 'Bác sĩ'}}</h3>
+                    <span class="status-badge" [class]="selectedConsultation.status.toLowerCase()">
+                        {{getStatusText(selectedConsultation.status)}}
+                    </span>
+                </div>
+                <button *ngIf="selectedConsultation.status === 'Active'"
+                        (click)="endConsultation()" class="end-btn">
+                    Kết thúc tư vấn
+                </button>
+            </div>
+
+            <div class="chat-messages" #scrollMessages>
+                <div *ngFor="let message of selectedConsultation.messages"
+                     [class]="'message ' + (message.senderType === 'User' ? 'sent' : 'received')">
+                    <div class="message-content">
+                        <span class="sender-name">{{message.senderName}}</span>
+                        <p>{{message.message}}</p>
+                        <span class="message-time">{{message.createdAt | date:'short'}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input">
+                <input type="file" 
+                       (change)="onFileSelected($event)" 
+                       accept="image/*"
+                       #fileInput>
+                <input type="text" 
+                       [(ngModel)]="newMessage" 
+                       placeholder="Nhập tin nhắn...">
+                <button (click)="sendMessage()">Gửi</button>
+              </div>
+        </div>
+    </div>
+
+<!-- Consultation Detail Section -->
+<div class="consultation-detail" *ngIf="selectedConsultation">
+    <div class="consultation-header">
+        <div class="status-info">
+            <span class="status-label">Trạng thái:</span>
+            <span class="status-value" [ngClass]="selectedConsultation.status.toLowerCase()">
+                {{ getStatusText(selectedConsultation.status) }}
+            </span>
+        </div>
+        <div class="doctor-info">
+            <span *ngIf="selectedConsultation.doctorName">Bác sĩ: {{ selectedConsultation.doctorName }}</span>
+            <span *ngIf="!selectedConsultation.doctorName">Chưa có bác sĩ</span>
+        </div>
+    </div>
+
+    <!-- Câu hỏi và Tin nhắn khi tư vấn đã kết thúc -->
+    <div *ngIf="selectedConsultation.status === 'Completed' || selectedConsultation.status === 'UserEnded' || selectedConsultation.status === 'DoctorEnded'">
+        <div class="consultation-question">
+            <p><strong>Câu hỏi: </strong>{{ selectedConsultation.question }}</p>
+        </div>
+        <div class="consultation-messages">
+            <div *ngFor="let message of selectedConsultation.messages">
+                <div class="message-info">
+                    <p><strong>{{message.senderName}}:</strong> {{message.message}}</p>
+                    <span class="message-time">{{message.createdAt | date:'short'}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+

@@ -1,0 +1,86 @@
+<!-- edit-hospital.component.html -->
+<div class="hospital-form">
+  <h2>Chỉnh sửa thông tin bệnh viện</h2>
+  <form [formGroup]="hospitalForm" (ngSubmit)="onSubmit()">
+    <!-- Thông tin cơ bản -->
+    <div class="form-group">
+      <label for="name">Tên bệnh viện:</label>
+      <input id="name" type="text" formControlName="name" placeholder="Nhập tên bệnh viện">
+      <div class="error-message" *ngIf="hospitalForm.get('name')?.invalid && hospitalForm.get('name')?.touched">
+        Vui lòng nhập tên bệnh viện
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Địa chỉ:</label>
+      <input id="address" type="text" formControlName="address" placeholder="Nhập địa chỉ">
+      <div class="error-message" *ngIf="hospitalForm.get('address')?.invalid && hospitalForm.get('address')?.touched">
+        Vui lòng nhập địa chỉ
+      </div>
+    </div>
+
+    <!-- Chuyên khoa -->
+    <div class="form-group">
+      <label for="specialties">Chuyên khoa:</label>
+      <select id="specialties" formControlName="specialties">
+        <option value="">Chọn chuyên khoa</option>
+        <option *ngFor="let specialty of specialties" [value]="specialty">
+          {{specialty}}
+        </option>
+      </select>
+      <div class="error-message" *ngIf="hospitalForm.get('specialties')?.invalid && hospitalForm.get('specialties')?.touched">
+        Vui lòng chọn chuyên khoa
+      </div>
+    </div>
+
+    <!-- Thời gian làm việc -->
+    <div class="form-group">
+      <label for="openTime">Giờ mở cửa:</label>
+      <input id="openTime" type="time" formControlName="openTime">
+      <div class="error-message" *ngIf="hospitalForm.get('openTime')?.invalid && hospitalForm.get('openTime')?.touched">
+        Vui lòng chọn giờ mở cửa
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="closeTime">Giờ đóng cửa:</label>
+      <input id="closeTime" type="time" formControlName="closeTime">
+      <div class="error-message" *ngIf="hospitalForm.get('closeTime')?.invalid && hospitalForm.get('closeTime')?.touched">
+        Vui lòng chọn giờ đóng cửa
+      </div>
+    </div>
+
+    <!-- Số điện thoại -->
+    <div class="form-group">
+      <label for="phoneNumber">Số điện thoại:</label>
+      <input id="phoneNumber" type="tel" formControlName="phoneNumber" placeholder="Nhập số điện thoại">
+      <div class="error-message" *ngIf="hospitalForm.get('phoneNumber')?.invalid && hospitalForm.get('phoneNumber')?.touched">
+        {{ getPhoneErrorMessage() }}
+      </div>
+    </div>
+
+    <!-- Mô tả -->
+    <div class="form-group">
+      <label for="description">Mô tả:</label>
+      <textarea id="description" formControlName="description" rows="4" placeholder="Nhập mô tả về bệnh viện"></textarea>
+    </div>
+
+    <!-- Upload hình ảnh -->
+    <div class="form-group">
+      <label>Hình ảnh:</label>
+      <div class="image-upload">
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput>
+        <div class="image-preview" *ngIf="imagePreview">
+          <img [src]="imagePreview" alt="Preview">
+          <button type="button" (click)="removeImage()">Xóa ảnh</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút điều khiển -->
+    <div class="form-actions">
+      <button type="button" (click)="onCancel()">Hủy</button>
+      <button type="submit" [disabled]="hospitalForm.invalid">Cập nhật</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Xác nhận xóa</h1>
+<div mat-dialog-content>
+  <p>Bạn có chắc muốn xóa {{ data.itemName }} không?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button class="cancel-button" (click)="onCancel()">Hủy</button>
+  <button mat-raised-button color="warn" class="delete-button" (click)="onConfirm()">Xóa</button>
+</div>

@@ -1,0 +1,56 @@
+
+<div class="admin-container">
+  <button class="menu-toggle" (click)="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+    <aside class="sidebar">
+      <div class="logo" [class.open]="isSidebarOpen">
+        <a routerLink = "/doctor/appointment-management"><img src="assets/logo.jpg" alt="HealthCare" ></a>
+        <span>HealthCare</span>
+      </div>
+      <h2 class="sidebar-title">CHỨC NĂNG</h2>
+        <nav>
+          <li>
+            <a routerLink="/doctor/appointment-management" routerLinkActive="active">
+              <i class="fas fa-tachometer-alt"></i>
+              <span>Bảng điều khiển</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/doctor/doctor-consultation" routerLinkActive="active">
+              <i class="fas fa-calendar-check"></i>
+              <span>Danh sách tư vấn</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/doctor/doctor-appointment" routerLinkActive="active">
+              <i class="fas fa-user-md"></i>
+              <span>Danh sách đặt khám</span>
+            </a>
+          </li>
+        </nav> 
+        </aside>
+    <main class="main-content">
+      <header>
+        <div class="header-content">
+          <h1>Doctor Dashboard</h1>
+          <div class="user-menu">
+            <div class="dropdown">
+              <button class="dropdown-toggle" (click)="toggleDropdown()">
+                BS {{doctor}} <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu" [class.show]="isDropdownOpen">
+                <button class="dropdown-item" (click)="logout()">
+                  <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+</div>

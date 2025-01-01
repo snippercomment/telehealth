@@ -1,0 +1,41 @@
+
+<!-- container -->
+<div class="container">
+  <div class="banner">
+    <img src="../../../assets/banner1.jpg" alt="Medical Center Banner">
+  </div>
+
+  <div class="centers-grid">
+    <div class="center-card" *ngFor="let center of centers" >
+      <div class="image-container">
+        <img [src]="center.imageUrl" [alt]="center.title">
+      </div>
+      <h3 class="center-title">{{ center.title }}</h3>
+    </div>
+  </div>
+</div>
+<!--  -->
+<div class="why-us-container">
+  <h1 class="title">Tại sao lại là chúng tôi?</h1>
+  
+  <div class="features-grid">
+    <div class="feature-card" *ngFor="let feature of features">
+      <div class="icon-container">
+        <i class="icon-{{feature.icon}}">
+           
+        </i>
+      </div>
+      <h3 class="feature-title">{{feature.title}}</h3>
+      <p class="feature-description">{{feature.description}}</p>
+    </div>
+  </div>
+</div>
+<!-- danh sách số người sử dụng -->
+<div class="statistics-container">
+  <div class="statistics-grid" @countAnimation>
+    <div class="statistic-card" *ngFor="let stat of statistics">
+      <div class="statistic-value">{{stat.value}}</div>
+      <div class="statistic-label">{{stat.label}}</div>
+    </div>
+  </div>
+</div>

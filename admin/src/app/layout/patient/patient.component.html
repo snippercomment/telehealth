@@ -1,0 +1,89 @@
+<!-- admin/components/profile-management.component.html -->
+<div class="profile-management-container">
+  <h2>Quản lý thông tin cá nhân người dùng</h2>
+  <div class="search-container">
+    <input 
+      matInput 
+      placeholder="Tìm kiếm người dùng..." 
+      [(ngModel)]="searchTerm" 
+      (input)="search()" 
+      class="search-input" />
+    
+  </div>
+  <table mat-table [dataSource]="profiles" class="mat-elevation-z8">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let profile">{{profile.id}}</td>
+    </ng-container>
+
+    <!-- Profile Image Column -->
+    <ng-container matColumnDef="profileImage">
+      <th mat-header-cell *matHeaderCellDef>Ảnh đại diện</th>
+      <td mat-cell *matCellDef="let profile">
+        <img [src]="profile.profileImage" 
+             alt="Profile" 
+             class="profile-thumbnail"
+             (error)="profile.profileImage = 'assets/icons/avatar.jpg'">
+      </td>
+    </ng-container>
+
+    <!-- Full Name Column -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef>Họ và tên</th>
+      <td mat-cell *matCellDef="let profile">{{profile.fullName}}</td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let profile">{{profile.email}}</td>
+    </ng-container>
+
+    <!-- Phone Column -->
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef>Số điện thoại</th>
+      <td mat-cell *matCellDef="let profile">{{profile.phoneNumber || 'Chưa cập nhật'}}</td>
+    </ng-container>
+
+    <!-- Address Column -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Địa chỉ</th>
+      <td mat-cell *matCellDef="let profile">{{profile.address || 'Chưa cập nhật'}}</td>
+    </ng-container>
+
+    <!-- Gender Column -->
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Giới tính</th>
+      <td mat-cell *matCellDef="let profile">
+        {{profile.gender === 'male' ? 'Nam' : profile.gender === 'female' ? 'Nữ' : 'Khác'}}
+      </td>
+    </ng-container>
+
+    <!-- Birth Date Column -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef>Ngày sinh</th>
+      <td mat-cell *matCellDef="let profile">
+        {{profile.birthDate | date:'dd/MM/yyyy'}}
+      </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Thao tác</th>
+      <td mat-cell *matCellDef="let profile">
+        <button mat-icon-button [routerLink]="['UserPatient/', profile.id]" matTooltip="Xem chi tiết">
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <div class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Trang trước</button>
+    <span>{{currentPage}}/{{totalPages}}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Trang sau</button>
+  </div>
+</div>

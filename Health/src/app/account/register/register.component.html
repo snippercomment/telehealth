@@ -1,0 +1,103 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="header">
+      <a routerLink="/" class="back-button">
+        <mat-icon>arrow_back</mat-icon> Trở về
+      </a>
+      <h2>Đăng ký</h2>
+  </div>
+
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email"
+          placeholder="Nhập email của bạn">
+        <div class="error-message" *ngIf="registerForm.get('email')?.errors?.['required'] && registerForm.get('email')?.touched">
+          Email là bắt buộc
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('email')?.errors?.['email'] && registerForm.get('email')?.touched">
+          Email không hợp lệ
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fullName">Họ Tên</label>
+        <input 
+          type="text" 
+          id="fullName" 
+          formControlName="fullName"
+          placeholder="Nhập họ tên của bạn">
+        <div class="error-message" *ngIf="registerForm.get('fullName')?.errors?.['required'] && registerForm.get('fullName')?.touched">
+          Họ tên là bắt buộc
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mật khẩu</label>
+        <div class="password-container">
+          <input 
+            [type]="hidePassword ? 'password' : 'text'" 
+            id="password" 
+            formControlName="password" 
+            placeholder="Nhập mật khẩu">
+          <button 
+            type="button" 
+            class="toggle-password" 
+            (click)="togglePasswordVisibility('password')">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        <div class="error-message" *ngIf="registerForm.get('password')?.errors?.['required'] && registerForm.get('password')?.touched">
+          Mật khẩu là bắt buộc
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">Nhập lại mật khẩu</label>
+        <div class="password-container">
+          <input 
+            [type]="hideConfirmPassword ? 'password' : 'text'" 
+            id="confirmPassword" 
+            formControlName="confirmPassword" 
+            placeholder="Nhập lại mật khẩu">
+          <button 
+            type="button" 
+            class="toggle-password" 
+            (click)="togglePasswordVisibility('confirmPassword')">
+            <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+        </div>
+        <!-- <div class="error-message" *ngIf="submitted && registerForm.errors?.['mismatch']">
+          Mật khẩu không khớp
+        </div> -->
+      </div>
+      
+
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="terms" 
+          formControlName="termsAccepted">
+        <label for="terms">
+          Bằng việc tạo tài khoản bạn sẽ đồng ý với 
+          <a href="/provision" target="_blank">điều khoản sử dụng</a>
+        </label>
+      </div>
+
+      <button 
+        type="submit" 
+        [disabled]="registerForm.invalid || isSubmitting"
+        class="submit-button">
+        {{ isSubmitting ? 'Đang đăng ký...' : 'Đăng ký' }}
+      </button>
+    </form>
+
+    <div class="login-link">
+      Đã có tài khoản? <a routerLink="/login">Đăng nhập tại đây</a>
+    </div>
+  </div>
+</div>

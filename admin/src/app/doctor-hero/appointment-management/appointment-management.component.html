@@ -1,0 +1,54 @@
+<div class="statistics">
+    <h1 class="title">Thống kê </h1>
+  
+    <div *ngIf="doctorStats" class="stats-content">
+      <div class="doctor-info">
+        <p><strong>Tên bác sĩ:</strong> {{ doctorStats.doctorName }}</p>
+        <p><strong>Tổng số cuộc hẹn:</strong> {{ doctorStats.totalAppointments }}</p>
+        <p><strong>Tổng số cuộc tư vấn:</strong> {{ doctorStats.totalConsultations }}</p>
+        <p><strong>Số cuộc hẹn đã khám:</strong> {{ doctorStats.completedAppointments }}</p>
+        <p><strong>Số cuộc tư vấn đã hoàn thành:</strong> {{ doctorStats.completedConsultations }}</p>
+      </div>
+  
+      <div class="appointments">
+        <h3>Cuộc hẹn đã khám:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Ngày cuộc hẹn</th>
+              <th>Họ tên bệnh nhân</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let appointment of doctorStats.appointments">
+              <td>{{ formatDate(appointment.appointmentDate) }}</td>
+              <td>{{ appointment.patientName }}</td>
+              <td>{{ appointment.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="consultations">
+        <h3>Cuộc tư vấn đã hoàn thành:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Ngày tư vấn</th>
+              <th>Họ tên bệnh nhân</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let consultation of doctorStats.consultations">
+              <td>{{ formatDate(consultation.consultationDate) }}</td>
+              <td>{{ consultation.patientName }}</td>
+              <td>{{ consultation.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

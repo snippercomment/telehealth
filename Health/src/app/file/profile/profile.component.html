@@ -1,0 +1,76 @@
+<div class="profile-container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="profile-header">
+      <div class="profile-image">
+        <img [src]="avatar || 'assets/icons/avatar.jpg'" alt="Profile Image">
+        <div class="image-upload">
+          <label for="file-input" class="upload-button">
+            <i class="fas fa-camera"></i>
+            Thay đổi ảnh
+          </label>
+          <input 
+            id="file-input" 
+            type="file" 
+            (change)="onFileSelected($event)"
+            accept="image/*"
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" formControlName="email" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+      <label>Họ và tên</label>
+      <input type="text" formControlName="fullName" class="form-control">
+      <div class="error-message" *ngIf="profileForm.get('fullName')?.invalid && profileForm.get('fullName')?.touched">
+        Vui lòng nhập họ tên
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Số điện thoại</label>
+      <input type="tel" formControlName="phoneNumber" class="form-control">
+      <div class="error-message" *ngIf="profileForm.get('phoneNumber')?.invalid && profileForm.get('phoneNumber')?.touched">
+        Vui lòng nhập số điện thoại hợp lệ
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Địa chỉ</label>
+      <input type="text" formControlName="address" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label>Giới tính</label>
+      <select formControlName="gender" class="form-control">
+        <option value="">Chọn giới tính</option>
+        <option value="male">Nam</option>
+        <option value="female">Nữ</option>
+        <option value="other">Khác</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Ngày sinh</label>
+      <input type="date" formControlName="birthDate" class="form-control">
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="!profileForm.valid" class="btn-save">
+        Lưu thay đổi
+      </button>
+    </div>
+  </form>
+   <!-- Thông báo khi lưu thành công -->
+   <div 
+   class="notification success-notification" 
+   *ngIf="isSaveSuccessful"
+ >
+   <p>Thông tin của bạn đã lưu thành công!</p>
+   <button class="close-btn" (click)="closeNotification()">X</button>
+ </div>
+</div>

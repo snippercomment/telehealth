@@ -1,0 +1,210 @@
+
+<div class="appointment-history">
+  <h2>Lịch sử đặt khám</h2>
+
+  <div class="appointments-container">
+    <div *ngFor="let appointment of appointments" class="appointment-card">
+      <div class="appointment-header">
+        <div class="header-main">
+          <h3>Lịch hẹn ngày {{appointment.appointmentDate | date:'dd/MM/yyyy'}}</h3>
+          <span [class]="'status-badge ' + appointment.status?.toLowerCase()">
+            {{appointment.status}}
+          </span>
+        </div>
+        <div class="appointment-actions">
+          <!-- Sửa lịch hẹn -->
+          <button 
+            *ngIf="!appointment.isApproved && appointment.status === 'Chờ xác nhận'" 
+            class="btn-edit"
+            (click)="openEditDialog(appointment)"
+          >
+            <i class="fas fa-edit"></i> Chỉnh sửa
+          </button>
+          <!-- Huỷ lịch hẹn -->
+          <button 
+            *ngIf="!appointment.isApproved && appointment.status === 'Chờ xác nhận'" 
+            class="btn-cancel"
+            (click)="openCancelDialog(appointment)"
+          >
+            <i class="fas fa-times"></i> Hủy lịch khám
+          </button>
+         
+          <button 
+  *ngIf="appointment.status === 'Chờ xác nhận'" 
+  class="btn-payment"
+  (click)="openPaymentDialog(appointment)"
+>
+  <i class="fas fa-credit-card"></i> Thanh toán
+</button>
+        </div>
+      </div>
+
+      <div class="appointment-details">
+        <div class="detail-row">
+          <span class="label"><i class="fas fa-user-md"></i> Bác sĩ:</span>
+          <span>{{appointment.doctor?.name}} - {{appointment.doctor?.specialty}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label"><i class="far fa-clock"></i> Thời gian:</span>
+          <span>{{appointment.appointmentTime}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label"><i class="fas fa-user"></i> Bệnh nhân:</span>
+          <span>{{appointment.patientName}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label"><i class="fas fa-phone"></i> Số điện thoại:</span>
+          <span>{{appointment.patientPhone}}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label"><i class="fas fa-comment"></i> Mô tả:</span>
+          <span>{{appointment.describe}}</span>
+        </div>
+         <!-- Thêm trường Phí khám -->
+         <div class="detail-row">
+          <span class="label"><i class="fas fa-money-bill-wave"></i> Phí khám:</span>
+          <span>{{appointment.doctor!.consultationFee | number}} đ</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cancel Dialog -->
+  <div class="dialog-overlay" *ngIf="showCancelDialog">
+    <div class="dialog">
+      <div class="dialog-header">
+        <h3>Xác nhận huỷ lịch khám</h3>
+        <button class="close-btn" (click)="showCancelDialog = false">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <textarea 
+        [(ngModel)]="cancelReason"
+        placeholder="Lý do huỷ lịch hẹn"
+        rows="4"
+      ></textarea>
+      <div class="dialog-actions">
+        <button class="btn-secondary" (click)="showCancelDialog = false">
+          <i class="fas fa-times"></i> Đóng
+        </button>
+        <button class="btn-primary" (click)="cancelAppointment()">
+          <i class="fas fa-check"></i> Xác nhận huỷ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Dialog -->
+  <div class="dialog-overlay" *ngIf="showEditDialog">
+    <div class="dialog">
+      <div class="dialog-header">
+        <h3>Chỉnh sửa lịch khám</h3>
+        <button class="close-btn" (click)="showEditDialog = false">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form [formGroup]="editForm" (ngSubmit)="updateAppointment()">
+        <div class="form-group">
+          <label><i class="fas fa-user"></i> Tên bệnh nhân</label>
+          <input type="text" formControlName="patientName">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-phone"></i> Số điện thoại</label>
+          <input type="text" formControlName="patientPhone">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-venus-mars"></i> Giới tính</label>
+          <select formControlName="gender">
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="far fa-calendar"></i> Ngày hẹn</label>
+          <input type="date" formControlName="appointmentDate">
+        </div>
+        <div class="form-group">
+          <label><i class="far fa-clock"></i> Giờ hẹn</label>
+          <input type="time" formControlName="appointmentTime">
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-comment"></i> Mô tả</label>
+          <textarea formControlName="describe" rows="4"></textarea>
+        </div>
+       
+        <div class="dialog-actions">
+          <button type="button" class="btn-secondary" (click)="showEditDialog = false">
+            <i class="fas fa-times"></i> Đóng
+          </button>
+          <button type="submit" class="btn-primary" [disabled]="!editForm.valid">
+            <i class="fas fa-save"></i> Cập nhật
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- Payment Dialog -->
+  <div class="dialog-overlay" *ngIf="showPaymentDialog">
+    <div class="dialog">
+      <div class="dialog-header">
+        <h3>Thanh toán lịch hẹn</h3>
+        <button class="close-btn" (click)="showPaymentDialog = false">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <form [formGroup]="paymentForm" (ngSubmit)="processPayment()">
+        <!-- Số thẻ -->
+        <div class="form-group">
+          <label><i class="fas fa-credit-card"></i> Số thẻ</label>
+          <input 
+            type="text" 
+            formControlName="cardNumber" 
+            placeholder="Nhập số thẻ (16 số)" 
+            required 
+            maxlength="16"
+            (input)="validateCardNumber($event)">
+          <small *ngIf="paymentForm.controls['cardNumber'].invalid && paymentForm.controls['cardNumber'].touched">
+            Số thẻ phải là 16 chữ số.
+          </small>
+        </div>
+  
+        <!-- Ngày hết hạn -->
+        <div class="form-group">
+          <label><i class="fas fa-calendar-alt"></i> Ngày hết hạn</label>
+          <input 
+            type="date" 
+            formControlName="expirationDate" 
+            placeholder="Chọn ngày hết hạn" 
+            required>
+          <small *ngIf="paymentForm.controls['expirationDate'].invalid && paymentForm.controls['expirationDate'].touched">
+            Vui lòng chọn ngày hợp lệ.
+          </small>
+        </div>
+  
+        <!-- Tổng số tiền -->
+        <div class="form-group">
+          <label><i class="fas fa-money-bill-wave"></i> Tổng số tiền</label>
+          <input 
+            type="text" 
+            [value]="selectedAppointment.doctor!.consultationFee | number" 
+            disabled>
+        </div>
+  
+        <!-- Nút hành động -->
+        <div class="dialog-actions">
+          <button type="button" class="btn-secondary" (click)="showPaymentDialog = false">
+            <i class="fas fa-times"></i> Đóng
+          </button>
+          <button type="submit" class="btn-primary" [disabled]="!paymentForm.valid">
+            <i class="fas fa-check"></i> Thanh toán
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="notification" *ngIf="showNotification">
+    <p>{{ notificationMessage }}</p>
+  </div>
+  
+</div>

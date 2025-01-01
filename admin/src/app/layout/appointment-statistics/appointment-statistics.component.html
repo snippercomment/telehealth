@@ -1,0 +1,60 @@
+<div class="revenue-container">
+  <h2>Thống kê doanh thu</h2>
+
+  <!-- Chọn khoảng thời gian -->
+  <div class="period-selector">
+    <button (click)="getRevenueByPeriod('Ngày')">Ngày</button>
+    <button (click)="getRevenueByPeriod('Tháng')">Tháng</button>
+    <button (click)="getRevenueByPeriod('Năm')">Năm</button>
+  </div>
+
+  <!-- Thanh tìm kiếm -->
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Tìm kiếm theo mã thanh toán, ID cuộc hẹn, hoặc tên người dùng..."
+      [(ngModel)]="searchTerm"
+      (input)="search()"
+    />
+  </div>
+
+  <!-- Bảng thống kê doanh thu -->
+  <div class="revenue-table" *ngIf="revenueData">
+    <h3>Doanh thu tổng: {{ revenueData.totalRevenue | number }} đ</h3>
+    <h4>Thống kê doanh thu theo : {{ revenueData.period }}</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Mã thanh toán</th>
+          <th>ID cuộc hẹn</th>
+          <th>Giá tiền</th>
+          <th>Ngày thanh toán</th>
+          <th>Chi tiết Trạng thái</th>
+          <th>Họ và tên</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of paginatedData">
+          <td>{{ row.paymentID }}</td>
+          <td>{{ row.appointmentID }}</td>
+          <td>{{ row.amount | number }} đ</td>
+          <td>{{ row.paymentDate }}</td>
+          <td>{{ row.detailStatus }}</td>
+          <td>{{ row.fullName }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Phân trang -->
+  <div class="pagination-controls">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Trang trước</button>
+    <span>{{ currentPage }}/{{ totalPages }}</span>
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Trang sau</button>
+  </div>
+  <!-- Nút xuất PDF -->
+  <div class="export-controls">
+    <button (click)="handleExportToPdf()">Xuất doanh thu PDF</button>
+  </div>
+</div>

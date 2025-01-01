@@ -1,0 +1,112 @@
+<div class="statistics-container">
+  <!-- Thống kê tổng quan -->
+  <div class="stats-grid">
+    <!-- Appointments -->
+    <div class="stats-card orange" routerLink="/admin/Appointment">
+      <div class="stats-number">{{ statistics?.appointments?.total || 0 }}</div>
+      <div class="stats-label">{{ statistics?.appointments?.label }}</div>
+      <div class="stats-detail">Chi tiết →</div>
+    </div>
+  
+    <!-- Doctors -->
+    <div class="stats-card green" routerLink="/admin/Doctor">
+      <div class="stats-number">{{ statistics?.doctors?.total || 0 }}</div>
+      <div class="stats-label">{{ statistics?.doctors?.label }}</div>
+      <div class="stats-detail">Chi tiết →</div>
+    </div>
+  
+    <!-- Hospitals -->
+    <div class="stats-card blue" routerLink="/admin/Hospital">
+      <div class="stats-number">{{ statistics?.hospitals?.total || 0 }}</div>
+      <div class="stats-label">{{ statistics?.hospitals?.label }}</div>
+      <div class="stats-detail">Chi tiết →</div>
+    </div>
+  
+    <!-- Patients -->
+    <div class="stats-card red" routerLink="/admin/Patient">
+      <div class="stats-number">{{ statistics?.patients?.total || 0 }}</div>
+      <div class="stats-label">{{ statistics?.patients?.label }}</div>
+      <div class="stats-detail">Chi tiết →</div>
+    </div>
+  </div>
+  
+  
+  <div class="stats-container">
+    <!-- Thống kê chi tiết theo thời gian -->
+    <div class="detailed-stats">
+      <div class="period-selector">
+        <select [(ngModel)]="selectedPeriod" (change)="onPeriodChange()">
+          <option value="week">Tuần</option>
+          <option value="month">Tháng</option>
+          <option value="year">Năm</option>
+        </select>
+      </div>
+  
+      <div class="stats-chart">
+        <h3>Chi tiết thống kê theo thời gian:</h3>
+        <div *ngIf="detailedStatistics">
+          <h4>Lượt đặt khám theo tuần:</h4>
+          <ul>
+            <li *ngFor="let stat of detailedStatistics?.appointmentStatistics">
+              {{ stat.date }}: {{ stat.count }} lượt đặt khám
+            </li>
+          </ul>
+  
+          <h4>Số bác sĩ thêm theo tuần:</h4>
+          <ul>
+            <li *ngFor="let stat of detailedStatistics?.doctorStatistics">
+              {{ stat.date }}: {{ stat.count }} bác sĩ
+              <ul>
+                <li *ngFor="let doctor of stat.doctors">
+                  Bác sĩ: {{ doctor.name }} - {{ doctor.specialty }} (Ngày thêm: {{ doctor.createdAt }})
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+        <!-- Phần hiển thị bệnh viện -->
+    <div class="stats-chart">
+      <h4>Bệnh viện mới:</h4>
+      <ul>
+        <li *ngFor="let stat of detailedStatistics?.hospitalStatistics">
+          {{ stat.date }}: {{ stat.count }} bệnh viện
+          <ul>
+            <li *ngFor="let hospital of stat.hospitals">
+              {{ hospital.name }} (Ngày thêm: {{ hospital.createdAt }})
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Phần hiển thị bệnh nhân -->
+    <div class="stats-chart">
+      <h4>Bệnh nhân mới:</h4>
+      <ul>
+        <li *ngFor="let stat of detailedStatistics?.patientStatistics">
+          {{ stat.date }}: {{ stat.count }} bệnh nhân
+          <ul>
+            <li *ngFor="let patient of stat.patients">
+              {{ patient.fullName }} (Ngày đăng ký: {{ patient.createdAt }})
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    </div>
+    
+    <!-- Thống kê trạng thái đặt khám -->
+    <div class="appointment-status">
+      <h3>Thống kê trạng thái đặt khám</h3>
+      <ul>
+        <li *ngFor="let status of appointmentStatusStats">
+          {{ status.status }}: {{ status.count }} lượt
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+
+</div>
