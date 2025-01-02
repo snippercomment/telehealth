@@ -15,6 +15,7 @@ import { LoginCredentials, LoginResponse } from '../../../model/appointment.mode
 export class LoginDoctorComponent {
   loginForm: FormGroup;
   errorMessage: string = '';
+   successMessage: string = '';
   isLoading: boolean = false;
   showPassword: boolean = false;
 
@@ -33,15 +34,22 @@ export class LoginDoctorComponent {
   }
 
   onSubmit(): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+  
     if (this.loginForm.valid) {
       this.isLoading = true;
-      this.errorMessage = '';
-
+  
       this.authService.doctorLogin(this.loginForm.value).subscribe({
         next: () => {
-          this.router.navigate(['/doctor/appointment-management']);
+          this.successMessage = 'Đăng nhập thành công! Chuyển hướng...';
+          this.errorMessage = '';
+  
+          setTimeout(() => {
+            this.router.navigate(['/doctor/appointment-management']);
+          }, 1000);
         },
-        error: (error) => {
+        error: () => {
           this.errorMessage = 'Email hoặc mật khẩu không đúng';
           this.isLoading = false;
         },
@@ -49,8 +57,11 @@ export class LoginDoctorComponent {
           this.isLoading = false;
         }
       });
+    } else {
+      this.errorMessage = 'Vui lòng nhập đầy đủ thông tin!';
     }
   }
+  
 
   // navigateToAdminLogin(): void {
   //   this.router.navigate(['/admin/login']);

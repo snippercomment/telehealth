@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B63BFC15-2810-4BD2-8227-9442A94A5B93}|Backend.csproj|c:\\users\\admin\\desktop\\healthcare\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B63BFC15-2810-4BD2-8227-9442A94A5B93}|Backend.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B63BFC15-2810-4BD2-8227-9442A94A5B93}|Backend.csproj|c:\\users\\admin\\desktop\\healthcare\\backend\\controllers\\appstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B63BFC15-2810-4BD2-8227-9442A94A5B93}|Backend.csproj|solutionrelative:controllers\\appstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -131,19 +135,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-01T06:25:58.47Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "AppStatisticsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\AppStatisticsController.cs",
               "RelativeDocumentMoniker": "Controllers\\AppStatisticsController.cs",
               "ToolTip": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\AppStatisticsController.cs",
               "RelativeToolTip": "Controllers\\AppStatisticsController.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAAAGcAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAGgAAAAAAAAAAAAAAGcAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-27T20:52:11.252Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Appointment.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\Appointment.cs",
               "RelativeDocumentMoniker": "Models\\Appointment.cs",
@@ -151,12 +168,11 @@
               "RelativeToolTip": "Models\\Appointment.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAowA4AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T16:41:54.265Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-23T16:41:54.265Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Doctor.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\Doctor.cs",
               "RelativeDocumentMoniker": "Models\\Doctor.cs",
@@ -164,12 +180,11 @@
               "RelativeToolTip": "Models\\Doctor.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAAAgwDsAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T08:13:48.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T08:13:48.526Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "AppointmentController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\AppointmentController.cs",
               "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
@@ -177,12 +192,11 @@
               "RelativeToolTip": "Controllers\\AppointmentController.cs",
               "ViewState": "AgIAAKQAAAAAAAAAAAAuwKkAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T05:31:32.404Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T05:31:32.404Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AppointmentDTO.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\DTO\\AppointmentDTO.cs",
               "RelativeDocumentMoniker": "DTO\\AppointmentDTO.cs",
@@ -190,12 +204,11 @@
               "RelativeToolTip": "DTO\\AppointmentDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T17:19:30.742Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T17:19:30.742Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "PaymentDTO.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\DTO\\PaymentDTO.cs",
               "RelativeDocumentMoniker": "DTO\\PaymentDTO.cs",
@@ -203,12 +216,11 @@
               "RelativeToolTip": "DTO\\PaymentDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-26T08:46:08.711Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-26T08:46:08.711Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Payment.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "Models\\Payment.cs",
@@ -216,12 +228,11 @@
               "RelativeToolTip": "Models\\Payment.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAwBsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-24T07:57:12.208Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-24T07:57:12.208Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "StatisticsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\StatisticsController.cs",
               "RelativeDocumentMoniker": "Controllers\\StatisticsController.cs",
@@ -233,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ConsultationController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\ConsultationController.cs",
               "RelativeDocumentMoniker": "Controllers\\ConsultationController.cs",
@@ -245,7 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Consultation.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\Consultation.cs",
               "RelativeDocumentMoniker": "Models\\Consultation.cs",
@@ -257,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "DoctorStatisticsController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\DoctorStatisticsController.cs",
               "RelativeDocumentMoniker": "Controllers\\DoctorStatisticsController.cs",
@@ -269,7 +280,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "ConsultationCreateDto.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\DTO\\ConsultationCreateDto.cs",
               "RelativeDocumentMoniker": "DTO\\ConsultationCreateDto.cs",
@@ -281,7 +292,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -293,7 +304,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "DoctorController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "Controllers\\DoctorController.cs",
@@ -305,7 +316,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -317,7 +328,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "AuthResponse.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\AuthResponse.cs",
               "RelativeDocumentMoniker": "Models\\AuthResponse.cs",
@@ -329,7 +340,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Hospital.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Models\\Hospital.cs",
               "RelativeDocumentMoniker": "Models\\Hospital.cs",
@@ -341,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "AppointmentService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Services\\AppointmentService.cs",
               "RelativeDocumentMoniker": "Services\\AppointmentService.cs",
@@ -353,7 +364,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "20241225194623_updatev6.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Migrations\\20241225194623_updatev6.cs",
               "RelativeDocumentMoniker": "Migrations\\20241225194623_updatev6.cs",
@@ -365,7 +376,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "20241225190619_updatev6.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Migrations\\20241225190619_updatev6.cs",
               "RelativeDocumentMoniker": "Migrations\\20241225190619_updatev6.cs",
@@ -376,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "20241225190309_updatev6.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Migrations\\20241225190309_updatev6.cs",
               "RelativeDocumentMoniker": "Migrations\\20241225190309_updatev6.cs",
@@ -387,7 +398,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "Services\\JwtService.cs",
@@ -399,7 +410,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "HospitalService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Services\\HospitalService.cs",
               "RelativeDocumentMoniker": "Services\\HospitalService.cs",
@@ -411,7 +422,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "FileService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Services\\FileService.cs",
               "RelativeDocumentMoniker": "Services\\FileService.cs",
@@ -423,7 +434,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "MyHub.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Hub\\MyHub.cs",
               "RelativeDocumentMoniker": "Hub\\MyHub.cs",
@@ -435,7 +446,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
@@ -447,7 +458,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "LoginDTO.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\DTO\\LoginDTO.cs",
               "RelativeDocumentMoniker": "DTO\\LoginDTO.cs",
@@ -459,7 +470,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "HospitalController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\HospitalController.cs",
               "RelativeDocumentMoniker": "Controllers\\HospitalController.cs",
@@ -471,7 +482,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\HealthCare\\Backend\\Controllers\\Role.cs",
               "RelativeDocumentMoniker": "Controllers\\Role.cs",

@@ -41,9 +41,16 @@
         </div>
       </div>
 
-      <div class="error-message" *ngIf="errorMessage">
-        {{ errorMessage }}
-      </div>
+     <!-- Thông báo thành công -->
+<div class="success-message" *ngIf="successMessage">
+  {{ successMessage }}
+</div>
+
+<!-- Thông báo lỗi -->
+<div class="error-message" *ngIf="errorMessage">
+  {{ errorMessage }}
+</div>
+
 
       <button class="button" type="submit" [disabled]="loginForm.invalid || isLoading">
         <span *ngIf="!isLoading">Đăng nhập</span>

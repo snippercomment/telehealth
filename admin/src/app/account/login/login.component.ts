@@ -51,8 +51,8 @@ export class LoginComponent {
           this.successMessage = 'Đăng nhập thành công! Chuyển hướng...';
           this.errorMessage = '';
           setTimeout(() => {
-            this.router.navigate(['/admin/statistical']);
-          }, 2000); // Giả lập delay chuyển hướng
+            this.router.navigate(['/admin/Statistical']);
+          }, 1000); // Giả lập delay chuyển hướng
         },
         error: () => {
           this.errorMessage = 'Email hoặc mật khẩu không đúng';
